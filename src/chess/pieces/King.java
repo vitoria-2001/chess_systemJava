@@ -10,6 +10,7 @@ public class King extends chessPiece {
 		super(board, color);
 	}
 	
+	@Override
 	public String toString () {
 		return "K";
 	}
