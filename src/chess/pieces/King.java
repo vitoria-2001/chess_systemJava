@@ -5,7 +5,7 @@ import boardgame.Position;
 import chess.Color;
 import chess.chessPiece;
 
-public abstract class King extends chessPiece {
+public class King extends chessPiece {
 
 	public King(Board board, Color color) {
 		super(board, color);
