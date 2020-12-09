@@ -98,6 +98,25 @@ public class ChessMatch {
 			piecesOnTheBoard.remove(capturedPiece);
 			capturedPieces.add(capturedPiece);
 		}
+		
+		// #specialmove castling kingside rook
+				if (p instanceof King && target.getColumn() == source.getColumn() + 2) {
+					Position sourceT = new Position(source.getRow(), source.getColumn() + 3);
+					Position targetT = new Position(source.getRow(), source.getColumn() + 1);
+					chessPiece rook = (chessPiece)board.removePiece(sourceT);
+					board.PlacePiece(rook, targetT);
+					rook.increseMoveCount();
+				}
+
+				// #specialmove castling queenside rook
+				if (p instanceof King && target.getColumn() == source.getColumn() - 2) {
+					Position sourceT = new Position(source.getRow(), source.getColumn() - 4);
+					Position targetT = new Position(source.getRow(), source.getColumn() - 1);
+					chessPiece rook = (chessPiece)board.removePiece(sourceT);
+					board.PlacePiece(rook, targetT);
+					rook.increseMoveCount();
+				}		
+		
 		return capturedPiece;
 	}
 	
@@ -111,6 +130,24 @@ public class ChessMatch {
 			capturedPieces.add(capturedPiece);
 			piecesOnTheBoard.add(capturedPiece);
 		}
+		
+		// #specialmove castling kingside rook
+			if (p instanceof King && target.getColumn() == source.getColumn() + 2) {
+				Position sourceT = new Position(source.getRow(), source.getColumn() + 3);
+				Position targetT = new Position(source.getRow(), source.getColumn() + 1);
+				chessPiece rook = (chessPiece)board.removePiece(targetT);
+				board.PlacePiece(rook, sourceT);
+				rook.decreseMoveCount();
+			}
+
+		// #specialmove castling queenside rook
+			if (p instanceof King && target.getColumn() == source.getColumn() - 2) {
+				Position sourceT = new Position(source.getRow(), source.getColumn() - 4);
+				Position targetT = new Position(source.getRow(), source.getColumn() - 1);
+				chessPiece rook = (chessPiece)board.removePiece(targetT);
+				board.PlacePiece(rook, sourceT);
+				rook.decreseMoveCount();
+			}
 	}
 	
 	private void validateSourcePosition(Position position) {
