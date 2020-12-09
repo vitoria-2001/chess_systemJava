@@ -79,6 +79,6 @@ public class King extends chessPiece {
 					
 					
 				
-				return null;
+				return mat;
 	}
 }
